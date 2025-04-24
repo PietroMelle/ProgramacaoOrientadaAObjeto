@@ -1,0 +1,62 @@
+<!-- 
+Nome: Pietro Melle Michelin
+RM: 2067
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programação Orientada a Objeto</title>
+  </head>
+
+  <body>
+
+    <center>
+      <h1> Atividade de Pietro Melle Michelin, usuário do RM 2067 </h1>
+      <p id="demo" style="font-size: 1.5vw; "> </p>
+      <p id="demo2"> </p>
+    </center>
+
+    <script>
+
+        let x = "";
+
+        const pessoa = {
+            nome: "João",
+            idade: 30,
+            sexo: "Masculino",
+            usaOculos: "Não",
+            filmesPrediletos: [
+                {genero: "Comédia", titulos: ["Meu Malvado Favorito 2", " Um Agente e Meio", " Gente Grande"]},
+                {genero: "Terror", titulos: ["A Múmia", " O Chamado 2", " O Grito"]},
+                {genero: "Aventura", titulos: ["Jumanji", " Indiana Jones", " Bem Vindo à Selva"]},
+                {genero: "Musical", titulos: ["Plankton: O Filme", " Matilda", " Grease"]},
+                {genero: "Romance", titulos: ["Mulherzinhas", " De Repente 30", " Como Eu Era Antes de Você"]},
+            ],
+            verificarGenero: function(genero) {
+                for (let x in this.filmesPrediletos) {
+                    if (this.filmesPrediletos[x].genero.toLocaleLowerCase() === genero.toLocaleLowerCase()) {
+                        return this.filmesPrediletos[x];
+                    }
+                }
+                return null; 
+            }
+        }
+
+        const generoDigitado = prompt("Digite um gênero de filme:");
+
+        const filmesEncontrados = pessoa.verificarGenero(generoDigitado);
+        if (filmesEncontrados) {
+            x += `<section> <p> <span style="font-weight: bold;"> ${filmesEncontrados.genero} </span> 
+                <br> <br> ${filmesEncontrados.titulos} </p> <hr style="width: 40vw"> </section>`;
+            document.getElementById("demo2").innerHTML = `<h3> Filmes Prediletos: </h3> ${x}`;
+        } else {
+            alert("O gênero não existe!");
+        }
+
+    </script>
+
+  </body>
+</html>

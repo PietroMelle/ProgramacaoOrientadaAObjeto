@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programação Orientada a Objeto</title>
+  </head>
+
+  <body>
+
+    <center>
+      <p id="demo"> </p>
+    </center>
+
+    <script>
+      const caneta = {
+        cor: "Azul",
+        tamanho: "Pequena",
+        marca: "BIC",
+        tipo: "Esferográfica",
+      };
+
+      let txt = "";
+      for (let x in caneta) {
+        txt += caneta[x] + " ";
+      }
+
+      document.getElementById("demo").innerHTML = txt
+
+
+    </script>
+
+  </body>
+</html>

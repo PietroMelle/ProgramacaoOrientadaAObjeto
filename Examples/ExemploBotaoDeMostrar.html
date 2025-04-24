@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programação Orientada a Objeto</title>
+  </head>
+
+  <body>
+
+    <center>
+      <h2 id="demo"> </h2>
+      <button onclick="mostrarInformacoes()" >Clique aqui para mostrar as informações </button>
+    </center>
+
+    <script>
+      const caneta = {
+        cor: "Azul",
+        tamanho: "Pequena",
+        marca: "BIC",
+        tipo: "Esferográfica",
+        getInformacoes1: function () {
+          return `Cor: ${this.cor}, Tamanho: ${this.tamanho}`;
+        },
+        getInformacoes2: function () {
+          return `Marca: ${this.marca}, Tipo: ${this.tipo}`;
+        },
+      };
+
+      // Deletando uma propriedade
+      delete caneta.tamanho
+
+      // Função para mostrar as informações da caneta
+      function mostrarInformacoes() {
+        document.getElementById("demo").innerHTML = `A caneta é de ${caneta.getInformacoes1()} e de ${caneta.getInformacoes2()}.`;
+      }
+
+    </script>
+
+  </body>
+</html>

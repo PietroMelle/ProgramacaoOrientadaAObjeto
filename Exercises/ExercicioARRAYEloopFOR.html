@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programação Orientada a Objeto</title>
+  </head>
+
+  <body>
+
+    <center>
+      <p id="demo"> </p>
+
+      <br />
+      <br />
+
+      <h1 id="demo2"> </h1>
+    </center>
+
+    <script>
+
+        let x = "";
+
+        const pessoa = {
+            nome: "João",
+            idade: 30,
+            carros: [
+                {marca: "Ford", modelos: ["Fiesta", "Focus", "Mustang"]},
+                {marca: "BMW", modelos: ["X1", "X2", "X3"]},
+                {marca: "Fiat", modelos: ["500", "Panda", "Uno"]}
+            ]
+        }
+
+        for (let i in pessoa.carros) {
+            x += "<p>" + pessoa.carros[i].marca + "<p>";
+                for (let j in pessoa.carros[i].modelos) {
+                    x += pessoa.carros[i].modelos[j] + "<br>";
+                } 
+        }
+
+        document.getElementById("demo").innerHTML = x;
+        document.getElementById("demo2").innerHTML = 
+        `O ${pessoa.nome} tem um carro da marca  ${pessoa.carros[2].marca} do modelo ${pessoa.carros[2].modelos[2]}.`
+
+    </script>
+
+  </body>
+</html>

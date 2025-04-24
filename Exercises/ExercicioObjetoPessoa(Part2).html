@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programação Orientada a Objeto</title>
+  </head>
+
+  <body>
+
+    <center>
+      <p id="demo" style="font-size: 1.5vw; "> </p>
+
+      <p id="demo2"> </p>
+    </center>
+
+    <script>
+
+        let x = "";
+
+        const pessoa = {
+            nome: "João",
+            idade: 30,
+            sexo: "Masculino",
+            usaOculos: "Não",
+            filmesPrediletos: [
+                {genero: "Comédia", titulos: ["Meu Malvado Favorito 2", " Um Agente e Meio", " Gente Grande"]},
+                {genero: "Terror", titulos: ["A Múmia", " O Chamado 2", " O Grito"]},
+                {genero: "Aventura", titulos: ["Jumanji", " Indiana Jones", " Bem Vindo à Selva"]},
+                {genero: "Musical", titulos: ["Plankton: O Filme", " Matilda", " Grease"]},
+                {genero: "Romance", titulos: ["Mulherzinhas", " De Repente 30", " Como Eu Era Antes de Você"]},
+            ]
+        }
+
+        for (let i in pessoa.filmesPrediletos) {
+            x += `<section> <p> <span style="font-weight: bold;"> ${pessoa.filmesPrediletos[i].genero} </span> 
+                <br> <br> ${pessoa.filmesPrediletos[i].titulos} </p> <hr style="width: 40vw"> </section>`
+        }
+
+        document.getElementById("demo").innerHTML = 
+        `<span style="font-weight: bold;"> Nome: </span>  ${pessoa.nome} - <span style="font-weight: bold;"> Idade: </span> ${pessoa.idade} - 
+        <span style="font-weight: bold;"> Sexo: </span> ${pessoa.sexo} - <span style="font-weight: bold;"> Usa óculos? </span> ${pessoa.usaOculos}`
+        document.getElementById("demo2").innerHTML = `<h3> Filmes Prediletos: </h3> ${x}`
+
+
+    </script>
+
+  </body>
+</html>

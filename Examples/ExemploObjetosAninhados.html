@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programação Orientada a Objeto</title>
+  </head>
+
+  <body>
+
+    <center>
+      <h2 id="demo"> </h2>
+      <h2 id="demo2"> </h2>
+    </center>
+
+    <script>
+      const caneta = {
+        cor: "Azul",
+        tamanho: "Média",
+        tipo: "Esferográfica",
+        marcas: { // Criando um objeto dentro do objeto
+            marca1: "BIC",
+            marca2: "MontBlanc",
+            marca3: "Faber Castell"
+        }
+      };
+
+      document.getElementById("demo").innerHTML = `Essa caneta ${caneta.cor} ${caneta.tamanho} ${caneta.tipo} é da marca ${caneta.marcas.marca2}`
+
+      const pessoa = {
+        nome: "João",
+        endereco: {
+            rua: "Rua Getúlio Vargas",
+            numero: "34",
+            complemento: "Apartamento 05",
+            bairro: "Bairro Jardim Europa",
+            cidade: "São Paulo",
+            estado: "São Paulo",
+            CEP: "103-821-98"
+        }
+      }
+
+      document.getElementById("demo2").innerHTML = `O ${pessoa.nome} mora no endereço: ${pessoa.endereco.rua}, número ${pessoa.endereco.numero}, 
+      complemento: ${pessoa.endereco.complemento}, ${pessoa.endereco.bairro}, cidade: ${pessoa.endereco.cidade}, estado: ${pessoa.endereco.estado}, 
+      CEP: ${pessoa.endereco.CEP}`
+
+    </script>
+
+  </body>
+</html>
