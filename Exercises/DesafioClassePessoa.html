@@ -1,0 +1,270 @@
+<!-- 
+Nome: Pietro Melle Michelin, Número: 22
+RM: 2067 
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title> Pietro Melle Michelin </title>
+
+        <style>
+            
+            body {
+                font-family: sans-serif;
+                background-color: #f4f4f4;
+            }
+
+            form {
+                background-color: #fff;
+                padding: 2em;
+                border-radius: 5px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                max-width: 25vw;
+                margin: auto;
+            }
+
+            input, select {
+                width: 70%;
+                padding: 1em;
+                padding-bottom: 0.7em;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                margin-bottom: 1em;
+            }
+
+            button {
+                background-color: #28a745;
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #218838;
+            }
+
+            h3 {
+                text-align: center;
+            }
+
+            #demo1, #demo2, #demo3, #demo4 {
+                padding: 10px auto;
+                padding: 10px;
+                border-radius: 5px;
+                max-width: 50%;
+                text-align: center;
+            }
+
+            #demo1 {
+                color: red;
+                font-weight: bold;
+                background-color: #ffe6e6;
+                border: 1px solid red;
+            }
+
+            #demo2 {
+                font-size: 1.1em;
+                line-height: 1.5;
+                background-color: #e6f7ff;
+                border: 1px solid #007bff;
+            }
+
+            #demo3 {
+                background-color: #fff3cd;
+                border: 1px solid #ffc107;
+            }
+
+            #demo4 {
+                background-color: #d4edda;
+                border: 1px solid #28a745;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        <!-- FORM -->
+        <form id="formPessoa">
+
+            <center>
+
+                <!-- INPUTS -->
+
+                <!-- 🔹 INPUT PARA O NOME -->
+                <label >Nome</label>
+                <br />
+                <input type="text" id="nome" placeholder="Digite seu nome" required />
+
+                <br />
+                <br />
+
+                <!-- 🔹 INPUT PARA O CPF -->
+                <label >CPF</label>
+                <br />
+                <input type="text" id="cpf" placeholder="Ex.: 123.456.789-00" required />
+
+                <br />
+                <br />
+
+                <!-- 🔹 INPUT PARA A IDADE -->
+                <label >Idade</label>
+                <br />
+                <input type="number" id="idade" placeholder="Digite sua idade" required />
+
+                <br />
+                <br />
+
+                <!-- 🔹 INPUT PARA O SEXO -->
+                <label >Sexo</label>
+                <br />
+                <input type="text" id="sexo" placeholder="Ex.: Masculino ou Feminino" required />
+
+                <br />
+                <br />
+                
+                <!-- 🔹 INPUT PARA A CIDADE -->
+                <label>Cidade</label>
+                <br />
+                <input type="text" id="cidade" placeholder="Digite sua cidade" required />
+
+                <br />
+                <br />
+
+                <!-- 🔹 INPUT PARA O ESTADO -->
+                <label> Estado </label>
+                <br />
+                <input type="text" id="estado" placeholder="Digite seu estado" required />
+
+                <br />
+                <br />
+
+                <!-- 🔹 SELECT PARA CONVERSÃO DE IDADE -->
+                <label for="tipoConversao"> Converter idade para: </label>
+                <br />
+                <select id="tipoConversao" required>
+                    <option value="">Selecione</option>
+                    <option value="meses">Meses</option>
+                    <option value="dias">Dias</option>
+                </select>
+
+                <!-- 🔹 BOTÃO COM FUNÇÃO QUE SERVE PARA ENVIAR AS INFORMAÇÕES À CLASS -->
+                <button type="button" onclick="cadastrarPessoa()">Cadastrar Pessoa</button>
+            </center>
+        </form>
+
+        <center>
+
+            <!-- Mostra os resultados -->
+
+            <!-- 1️⃣ "demo1" -> Validação da idade (vermelho) -->
+            <h3 id="demo1"></h3>
+
+            <!-- 2️⃣ "demo2" -> Mensagem de informações (azul) -->
+            <h3 id="demo2"></h3>
+
+            <!-- 3️⃣ "demo3" -> Mensagem de sexo (amarelo) -->
+            <h3 id="demo3"></h3>
+
+            <!-- 4️⃣ "demo4" -> Conversão de idade (verde) -->
+            <h3 id="demo4"></h3>
+
+        </center>
+
+        <script>
+            class Pessoa {
+                constructor(nome, cpf, idade, sexo, cidade, estado) {
+                    this.nome = nome;
+                    this.cpf = cpf;
+                    this.idade = idade;
+                    this.sexo = sexo;
+                    this.cidade = cidade;
+                    this.estado = estado;
+                }
+
+                // ❗ Método de validar a idade se for maior ou menor que 18 anos
+                avisoDeIdade() {
+                    return this.idade < 18
+                        // Caso for falso a condição...
+                        ? "Cuidado. Você é menor de idade!"
+                        // Caso for verdadeiro a condição...
+                        : "Liberado para maior de idade!";
+                } // Usamos o operador ternário para validar a idade.
+
+                // ❗ Método que retorna as informações da pessoa (está <li> lista não ordenada)
+                mensagemInformacoes() {
+                    return `
+                <li> <strong> Nome: </strong> ${this.nome} </li>
+                <li> <strong> CPF: </strong> ${this.cpf} </li>
+                <li> <strong> Idade: </strong> ${this.idade} </li>
+                <li> <strong> Sexo: </strong> ${this.sexo} </li>
+                <li> <strong> Cidade: </strong> ${this.cidade} </li>
+                <li> <strong> Estado: </strong> ${this.estado} </li>`;
+                }
+            
+                // ❗ Método que retorna a mensagem de sexo da pessoa
+                mensagemSexo() {
+                    if (
+                        // Verifica se o sexo é masculino
+                        this.sexo.toLowerCase() === "m" || this.sexo.toLowerCase() === "masculino"
+                    ) {
+                        return "Parabéns, você é do sexo Masculino."; // Mensagem para masculino
+                    } else if (
+                        // Verifica se o sexo é feminino
+                        this.sexo.toLowerCase() === "f" || this.sexo.toLowerCase() === "feminino"
+                    ) {
+                        return "Parabéns, você é do sexo Feminino."; // Mensagem para feminino
+                    } else {
+                        return "Sexo não identificado."; // Mensagem para sexo não identificado
+                    }
+                }
+
+                // ❗ Método que converte a idade para meses ou dias
+                conversaoIdade(tipo) { // ◽ "tipo" é o parâmetro que define se a conversão será para meses ou dias
+                    // Caso for meses...
+                    if (tipo.toLowerCase() === "meses") {
+                        // Multiplica a idade (anos) por 12 (meses)
+                        return `Sua idade em meses é: ${this.idade * 12} meses.`;
+                        // Caso for dias...
+                    } else if (tipo.toLowerCase() === "dias") {
+                        // Multiplica a idade (anos) por 365 (dias)
+                        return `Sua idade em dias é: ${this.idade * 365} dias.`;
+                    } else {
+                        return "Tipo de conversão inválido."; // Mensagem para tipo de conversão inválido
+                    }
+                }
+            }
+
+            // 📌 Função que pega os valores dos inputs e coloca para a classe Pessoa
+            function cadastrarPessoa() {
+                const nome = document.getElementById("nome").value;
+                const cpf = document.getElementById("cpf").value;
+                const idade = parseInt(document.getElementById("idade").value);
+                const sexo = document.getElementById("sexo").value;
+                const cidade = document.getElementById("cidade").value;
+                const estado = document.getElementById("estado").value;
+                const tipoConversao = document.getElementById("tipoConversao").value;
+
+                const pessoa = new Pessoa(nome, cpf, idade, sexo, cidade, estado);
+
+                // 1️⃣ "demo1" -> Validação da idade (vermelho)
+                document.getElementById("demo1").innerHTML = pessoa.avisoDeIdade();
+
+                // 2️⃣ "demo2" -> Mensagem de informações (azul)
+                document.getElementById("demo2").innerHTML = pessoa.mensagemInformacoes();
+
+                // 3️⃣ "demo3" -> Mensagem de sexo (amarelo)
+                document.getElementById("demo3").innerHTML = pessoa.mensagemSexo();
+
+                // 4️⃣ "demo4" -> Conversão de idade (verde)
+                document.getElementById("demo4").innerHTML = pessoa.conversaoIdade(tipoConversao); 
+                // ◽ "tipoConversao" é o valor do select que o usuário escolheu.
+            }
+        </script>
+    </body>
+</html>

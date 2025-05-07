@@ -15,8 +15,8 @@ RM: 2067
 
     <center>
       <h1> Atividade de Pietro Melle Michelin, usuário do RM 2067 </h1>
-      <p id="demo" style="font-size: 1.5vw; "> </p>
-      <p id="demo2"> </p>
+      <p style="font-size: 1.5vw; "> </p>
+      <p id="demo"> </p>
     </center>
 
     <script>
@@ -44,14 +44,14 @@ RM: 2067
                 return null; 
             }
         }
-
+        
         const generoDigitado = prompt("Digite um gênero de filme:");
 
         const filmesEncontrados = pessoa.verificarGenero(generoDigitado);
         if (filmesEncontrados) {
             x += `<section> <p> <span style="font-weight: bold;"> ${filmesEncontrados.genero} </span> 
                 <br> <br> ${filmesEncontrados.titulos} </p> <hr style="width: 40vw"> </section>`;
-            document.getElementById("demo2").innerHTML = `<h3> Filmes Prediletos: </h3> ${x}`;
+            document.getElementById("demo").innerHTML = `<h3> Filmes Prediletos: </h3> ${x}`;
         } else {
             alert("O gênero não existe!");
         }

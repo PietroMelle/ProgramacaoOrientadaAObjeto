@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Exemplo de Classe com Objetos Intanciados </title>
+</head>
+<body>
+
+    <h1> Criando Classe e Instanciando um Objeto </h1>
+    
+    <script>
+
+        class MinhaClasse {
+            constructor(nome, idade, sexo) {
+                this.nome = nome;
+                this.idade = idade;
+                this.sexo = sexo;
+            }
+
+            testeAlerta() {
+                alert(`Informações digitadas: \n Nome: ${this.nome} \n Idade: ${this.idade} \n Sexo: ${this.sexo}`);
+            }
+
+            testeConsole() {
+                console.log(`Informações digitadas: \n Nome: ${this.nome} \n Idade: ${this.idade} \n Sexo: ${this.sexo}`);
+            }
+
+            /* 🔹 Novo Método de verificação */
+            testeSexo() {
+                let respostaSexo = "";
+
+                if (this.sexo == "M") {
+                    respostaSexo = "Masculino";} 
+                    else { 
+                    respostaSexo = "Feminino" }
+
+                return respostaSexo;
+            }
+        }
+
+        objeto1 = new MinhaClasse("Lucas", 25, "M") 
+
+        objeto1.testeAlerta()
+        objeto1.testeConsole()
+
+        sexo = prompt("Digite seu sexo: M ou F")
+
+        if (sexo == objeto1.sexo) {
+            alert(`Seu sexo é igual do ${objeto1.nome}`)
+        } else {
+            alert(`Seu sexo é diferente do ${objeto1.nome}`)
+        }
+
+        document.write(`Resultado: ${objeto1.testeSexo()}`)
+        
+    </script>
+
+</body>
+</html>

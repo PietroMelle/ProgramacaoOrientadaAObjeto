@@ -1,0 +1,210 @@
+<!-- 
+Nome: Pietro Melle Michelin, Número: 22
+RM: 2067 
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pietro Melle Michelin</title>
+
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #f4f4f4;
+      }
+
+      form {
+        background-color: #fff;
+        padding: 2em;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        max-width: 25vw;
+        margin: auto;
+      }
+
+      input,
+      select {
+        width: 70%;
+        padding: 1em;
+        padding-bottom: 0.7em;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 1em;
+      }
+
+      button {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #218838;
+      }
+
+      h3 {
+        text-align: center;
+      }
+
+      #demo1,
+      #demo2,
+      #demo3 {
+        padding: 10px auto;
+        padding: 10px;
+        border-radius: 5px;
+        max-width: 50%;
+        text-align: center;
+      }
+
+      #demo1 {
+        color: red;
+        font-weight: bold;
+        background-color: #ffe6e6;
+        border: 1px solid red;
+      }
+
+      #demo2 {
+        font-size: 1.1em;
+        line-height: 1.5;
+        background-color: #e6f7ff;
+        border: 1px solid #007bff;
+      }
+
+      #demo3 {
+        background-color: #fff3cd;
+        border: 1px solid #ffc107;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- FORM -->
+    <form id="formPessoa">
+      <h1>CARROS</h1>
+
+      <center>
+        <!-- INPUTS -->
+
+        <!-- 🔹 INPUT PARA A MARCA -->
+        <label> Marca </label>
+        <br />
+        <input type="text" id="marca" placeholder="Digite a marca" required />
+
+        <br />
+        <br />
+
+        <!-- 🔹 INPUT PARA O MODELO -->
+        <label> Modelo </label>
+        <br />
+        <input
+          type="text"
+          id="modelo"
+          placeholder="Digite o modelo"
+          required
+        />
+
+        <br />
+        <br />
+
+        <!-- 🔹 INPUT PARA A COR -->
+        <label> Cor </label>
+        <br />
+        <input
+          type="text"
+          id="cor"
+          placeholder="Digite a cor"
+          required
+        />
+
+        <br />
+        <br />
+
+        <!-- 🔹 INPUT PARA O ANO DE FABRICAÇÃO -->
+        <label> Ano de Fabricação </label>
+        <br />
+        <input
+          type="number"
+          id="anoDeFabricacao"
+          placeholder="Digite o ano de fabricação"
+          required
+        />
+
+        <br />
+        <br />
+
+        <!-- 🔹 BOTÃO COM FUNÇÃO QUE SERVE PARA ENVIAR AS INFORMAÇÕES À CLASS -->
+        <button type="button" onclick="cadastrarCarro()">
+          Cadastrar Pessoa
+        </button>
+      </center>
+    </form>
+
+    <center>
+      <!-- Mostra os resultados -->
+      <h3 id="demo1"></h3>
+
+      <h3 id="demo2"></h3>
+
+      <h3 id="demo3"></h3>
+    </center>
+
+    <script>
+          class Carros {
+        constructor(marca, modelo, cor, anoDeFabricacao) {
+            this.marca = marca;
+            this.modelo = modelo;
+            this.cor = cor;
+            this.anoDeFabricacao = anoDeFabricacao;
+        }
+
+        calcularTempoDeUso() {
+    const dataAtual = new Date();
+    const anoAtual = dataAtual.getFullYear();
+    const tempoDeUso = anoAtual - this.anoDeFabricacao;
+    return `O carro da marca ${this.marca}, modelo ${this.modelo}, de cor ${this.cor} e com data de fabricação
+            de ${this.anoDeFabricacao} tem ${tempoDeUso} ano(s) de uso.`;
+}
+
+        mensagemInformacoes() {
+            return `
+            <li> <strong> Marca: </strong> ${this.marca} </li>
+            <li> <strong> Modelo: </strong> ${this.modelo} </li>
+            <li> <strong> Cor: </strong> ${this.cor} </li>
+            <li> <strong> Ano de fabricação: </strong> ${this.anoDeFabricacao} </li> `;
+        }
+
+        verificarMarcaPremiada() {
+            const marcasPremiadas = ["FIAT", "GM", "VOLKSWAGEN", "HONDA"];
+            const marcaEncontrada = marcasPremiadas.find(marca => marca === this.marca);
+            if (marcaEncontrada) {
+            return `A marca ${this.marca} é uma marca premiada!`;
+            } else {
+            return `A marca ${this.marca} não está na lista de marcas premiadas.`;
+            }
+        }
+    }
+
+    function cadastrarCarro() {
+        const marca = document.getElementById("marca").value.toUpperCase();
+        const modelo = document.getElementById("modelo").value;
+        const cor = document.getElementById("cor").value;
+        const anoDeFabricacao = parseInt(document.getElementById("anoDeFabricacao").value);
+
+        const carro = new Carros(marca, modelo, cor, anoDeFabricacao);
+
+        document.getElementById("demo1").innerHTML = carro.mensagemInformacoes(); // Mostra as informações do carro
+        document.getElementById("demo2").innerHTML = carro.verificarMarcaPremiada(); // Verifica se a marca é premiada
+        document.getElementById("demo3").innerHTML = carro.calcularTempoDeUso(); // Calcula o tempo de uso do carro
+    }
+
+    </script>
+
+  </body>
+</html>

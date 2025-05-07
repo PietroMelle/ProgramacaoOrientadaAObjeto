@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Classes</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+        p {
+            line-height: 2;
+        }
+    </style>
+
+</head>
+
+<body>
+    
+    <center>
+    <h2> Desafio Classes </h2>
+    </center>
+
+    <p>
+        ▪ Vamos fazer uma classe de carros, que tenha um método que ao ser acionado pelo objeto possa calcular quantos anos
+        o modelo de carro tem em relação ao ano atual. <br /> <br />
+        ▪ Vamos construir uma classe com os seguintes atributos: <br />
+        1. Marca <br />
+        2. Modelo <br />
+        3. Cor <br />
+        4. Ano de Fabricação <br />
+
+        <br />
+
+        ▪ O método usará uma função do JS (date) que pode nos fornecer o ano atual. <br /> <br />
+        ▪ Exemplo de uso: <br />
+        const dia = new Date(); <br />
+        const ano = dia.getFullYear(); <br />
+        document.getElementById("tempoDeUso").innerHTML = ano;
+    </p>
+
+    <br />
+
+    <h2> Resultado:  </h2>
+
+    <h2 id="tempoDeUso"> </h2>
+
+    <script>
+
+        class Carros {
+            constructor(marca, modelo, cor, anoDeFabricacao) {
+                this.marca = marca;
+                this.modelo = modelo;
+                this.cor = cor;
+                this.anoDeFabricacao = anoDeFabricacao;
+            }
+
+            calcularTempoDeUso() {
+                const dataAtual = new Date();
+                const anoAtual = dataAtual.getFullYear(); 
+                const tempoDeUso = anoAtual - this.anoDeFabricacao; 
+                document.getElementById("tempoDeUso").innerHTML = 
+                    `O carro da marca ${this.marca}, modelo ${this.modelo}, de cor ${this.cor} e com data de fabricação 
+                    de ${this.anoDeFabricacao} tem ${tempoDeUso} ano(s) de uso.`; 
+            }
+        }
+
+        marcaCarro = prompt("Digite a marca do carro:");
+        modeloCarro = prompt("Digite o modelo do carro:");
+        corCarro = prompt("Digite a cor do carro:");
+        anoDeFabricacaoCarro = prompt("Digite o ano de fabricação do carro:");
+
+        const objetoCarro1 = new Carros(marcaCarro, modeloCarro, corCarro, anoDeFabricacaoCarro);
+        objetoCarro1.calcularTempoDeUso(); 
+        
+    </script>
+
+</body>
+
+</html>

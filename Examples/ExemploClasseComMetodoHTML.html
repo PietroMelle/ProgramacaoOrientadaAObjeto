@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exemplo de Classe com Métodos</title>
+  </head>
+
+  <body>
+
+    <script>
+
+      class MinhaClasse {
+        constructor(nome, idade) {
+          this.nome = nome;
+          this.idade = idade;
+        }
+
+        testeAlerta() {
+          alert(`Informações digitadas: \n Nome: ${this.nome} \n Idade: ${this.idade}`);
+        }
+
+        testeConsole() {
+            console.log(`Informações digitadas: \n Nome: ${this.nome} \n Idade: ${this.idade}`);
+        }
+      }
+
+      /* ✅ Usando PROMPT para pegar as informações */
+      pegarNome = prompt("Digite seu nome"); /* ❗ Quando não usa-se CONST ou LET, vai ser sempre VAR */
+      pegarIdade = prompt("Digite sua idade");
+
+      /* ✅ Usando as variáveis do PROMPT para mostrar as informações */
+      meuObjeto1 = new MinhaClasse(pegarNome, pegarIdade);
+
+      /* ✅ Fazendo o Método acontecer */
+      meuObjeto1.testeAlerta();
+
+    </script>
+
+  </body>
+</html>

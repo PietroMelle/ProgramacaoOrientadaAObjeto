@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício Classe</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+        p {
+            line-height: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <center>
+    <h2> Exercício de Classes </h2>
+    </center>
+
+    <p> ▪ Elabore classes para as seguintes entidades: <br /> 
+        1. Carros <br /> 
+        2. Celular <br /> 
+        3. Camisa <br /> 
+        4. Computador <br />  
+        5. Calça <br /> 
+        6. Mochila <br /> 
+        <br /> 
+        ▪ As classes devem ter ao menos 3 atributos e 1 método. <br /> 
+        ▪ Crie 2 objetos para cada classe.
+    </p>
+    
+    <script>
+
+        class Carros {
+            constructor(marca, modelo, ano) {
+                this.marca = marca;
+                this.modelo = modelo;
+                this.ano = ano;
+            }
+
+            exibirInformacoes() {
+                console.log(`Informações: \nMarca: ${this.marca} \nModelo: ${this.modelo} \nAno: ${this.ano}`);
+            }
+        }
+
+        class Celular {
+            constructor(cor, marca, modelo) {
+                this.cor = cor;
+                this.marca = marca;
+                this.modelo = modelo;
+            }
+
+            exibirInformacoes() {
+                console.log(`Informações: \nCor: ${this.cor} \nMarca: ${this.marca} \nModelo: ${this.modelo}`);
+            }
+        }
+
+        class Camisa {
+            constructor(tamanho, cor, marca) {
+                this.tamanho = tamanho;
+                this.cor = cor;
+                this.marca = marca;
+            }
+
+            exibirInformacoes() {
+                console.log(`Informações: \nTamanho: ${this.tamanho} \nCor: ${this.cor} \nMarca: ${this.marca}`);
+            }
+        }
+
+        class Computador {
+            constructor(placaDeVideo, processador, memoria) {
+                this.placaDeVideo = placaDeVideo;
+                this.processador = processador;
+                this.memoria = memoria;
+            }
+
+            exibirInformacoes() {
+                console.log(`Informações: \nPlaca de Vídeo: ${this.placaDeVideo} \nProcessador: ${this.processador} \nMemória: ${this.memoria}`);
+            }
+        }
+
+        class Calca {
+            constructor(tamanho, cor, marca) {
+                this.tamanho = tamanho;
+                this.cor = cor;
+                this.marca = marca;
+            }
+
+            exibirInformacoes() {
+                console.log(`Informações: \nTamanho: ${this.tamanho} \nCor: ${this.cor} \nMarca: ${this.marca}`);
+            }
+        }
+
+        class Mochila {
+            constructor(tamanho, cor, marca) {
+                this.tamanho = tamanho;
+                this.cor = cor;
+                this.marca = marca;
+            }
+
+            exibirInformacoes() {
+                console.log(`Informações: \nTamanho: ${this.tamanho} \nCor: ${this.cor} \nMarca: ${this.marca}`);
+            }
+        }
+
+        /* ✅ Criando Objetos para as classes */
+
+        /* 1️⃣ Carros */
+        objetoCarros1 = new Carros("Chevrolet", "Onix", 2020);
+        objetoCarros2 = new Carros("Volkswagen", "Gol", 2019);
+
+        console.log("Carros:");
+        objetoCarros1.exibirInformacoes();
+        objetoCarros2.exibirInformacoes();
+        console.log("------------------");
+        
+
+        /* 2️⃣ Celular */
+        objetoCelular1 = new Celular("Preto", "Samsung", "Galaxy S21");
+        objetoCelular2 = new Celular("Branco", "Apple", "iPhone 12");
+
+        console.log("Celulares:");
+        objetoCelular1.exibirInformacoes();
+        objetoCelular2.exibirInformacoes();
+        console.log("------------------");
+
+
+        /* 3️⃣ Camisa */
+        objetoCamisa1 = new Camisa("M", "Azul", "Nike");
+        objetoCamisa2 = new Camisa("G", "Vermelha", "Adidas");
+
+        console.log("Camisas:");
+        objetoCamisa1.exibirInformacoes();
+        objetoCamisa2.exibirInformacoes();
+        console.log("------------------");
+
+
+        /* 4️⃣ Computador */
+        objetoComputador1 = new Computador("NVIDIA GTX 1660", "Intel i5", "16GB");
+        objetoComputador2 = new Computador("NVIDIA RTX 4090", "AMD Ryzen 7", "32GB");
+
+        console.log("Computadores:");
+        objetoComputador1.exibirInformacoes();
+        objetoComputador2.exibirInformacoes();
+        console.log("------------------");
+
+
+        /* 5️⃣ Calca */
+        objetoCalca1 = new Calca("M", "Preta", "Levi's");
+        objetoCalca2 = new Calca("G", "Azul", "Diesel");
+
+        console.log("Calças:");
+        objetoCalca1.exibirInformacoes();
+        objetoCalca2.exibirInformacoes();
+        console.log("------------------");
+
+        /* 6️⃣ Mochila */
+        objetoMochila1 = new Mochila("Grande", "Preta", "Nike");
+        objetoMochila2 = new Mochila("Média", "Vermelha", "Adidas");
+
+        console.log("Mochilas:");
+        objetoMochila1.exibirInformacoes();
+        objetoMochila2.exibirInformacoes();
+        console.log("------------------");
+
+    </script>
+
+</body>
+</html>
