@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Exemplo de Encapsulamento com GET </title>
+</head>
+<body>
+    <h1> Exemplo de Encapsulamento com GET </h1>
+    
+    <p id="demo"> </p>
+    <p id="demo1"> </p>
+
+    <script>
+
+        class Carro {
+            constructor(marca) {
+                this._marca = marca
+            }
+
+            get carromarca() {
+                return this._marca.toUpperCase() // Convertendo para maiusculo
+            } 
+
+            set marca(x) { // Validação
+                if (x === "" || (typeof x === "undefined")) {return;}
+                this._marca = x
+            }
+        }
+
+        const meuCarro = new Carro("Honda")
+
+        document.getElementById("demo").innerHTML = meuCarro.carromarca
+        meuCarro.marca = "" // Passandoum valor vazio
+        document.getElementById("demo1").innerHTML = meuCarro.carromarca
+
+    </script>
+
+</body>
+</html>

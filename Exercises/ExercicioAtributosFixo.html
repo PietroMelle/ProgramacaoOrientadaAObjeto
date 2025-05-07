@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atributos Fixo</title>
+    <style>
+        * {
+            box-sizing: border-box; /* Faz com que o padding e border sejam incluídos na largura total do elemento */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fdf6f0;
+            margin: 0;
+            padding: 20px;
+            color: #444;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        section {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            padding: 25px 30px;
+            width: 30vw;
+            margin-bottom: 30px;
+            transition: box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        section:hover {
+            box-shadow: 0 10px 15px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #16a085;
+            border-bottom: 3px solid #16a085;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #2980b9;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        input {
+            margin-top: 6px;
+            padding: 10px 12px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            width: 20vw;
+            transition: 0.3s ease;
+            font-family: inherit;
+            color: #333;
+        }
+
+        input:focus { /* Estilo do input quando está em foco (quando você clica nele) */
+            border-color: #16a085;
+            outline: none;
+            box-shadow: 0 0 6px rgba(22,160,133,0.4);
+        }
+
+        button {
+            margin-top: 18px;
+            padding: 12px 0;
+            border: none;
+            border-radius: 8px;
+            background: #16a085;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+            max-width: 20ch;
+            width: 100%;
+            align-self: center; /* Faz o botão ocupar toda a largura do form */
+        }
+
+        button:hover {
+            background: #13866a;
+        }
+
+        ul {
+            list-style-type: none; /* Remove os marcadores da lista */
+            padding-left: 0;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        ul li {
+            padding: 4px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 6px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Preencha as Informações do Carro</h1>
+    <section>
+        <form>
+            <label for="marca">Marca:</label>
+            <input
+                type="text"
+                id="marca"
+                name="marca"
+                placeholder="Honda, Toyota, etc."
+            >
+            <br>
+            <br>
+            <label for="modelo">Modelo:</label>
+            <input
+                type="text"
+                id="modelo"
+                name="modelo"
+                placeholder="Civic, Corolla, etc."
+            >
+            <br>
+            <br>
+            <label for="cor">Cor:</label>
+            <input
+                type="text"
+                id="cor"
+                name="cor"
+                placeholder="Preto, Branco, etc."
+            >
+            <br>
+            <br>
+            <label for="ano_fab">Ano de Fabricação:</label>
+            <input
+                type="number"
+                id="ano_fab"
+                name="ano_fab"
+                placeholder="2020, 2021, etc."
+            >
+            <br>
+            <br>
+            <label for="precoEtanol">Preço do Etanol:</label>
+            <input
+                type="number"
+                id="precoEtanol"
+                name="precoEtanol"
+                placeholder="R$ 4.00, R$ 5.30, etc."
+                min="0"
+            >
+            <br>
+            <br>
+            <label for="precoGasolina">Preço da Gasolina:</label>
+            <input
+                type="number"
+                id="precoGasolina"
+                name="precoGasolina"
+                placeholder="R$ 5.00, R$ 6.50, etc."
+                min="0"
+            >
+            <button type="button" onclick="enviar()">Enviar</button>
+        </form>
+    </section>
+    <section>
+        <h3>Informações sobre o Carro</h3>
+        <ul id="info"></ul>
+    </section>
+    <section>
+        <h2>Calcular Consumo</h2>
+        <label for="distancia">Distância a ser percorrida:</label>
+        <input
+            type="number"
+            id="distancia"
+            name="distancia"
+        >
+        <button type="button" onclick="calcularE()">Calcular Etanol</button>
+        <button type="button" onclick="calcularG()">Calcular Gasolina</button>
+        <br>
+        <br>
+        <h3>Consumo</h3>
+        <!-- Retorno de resultado das contas de consumo -->
+        <ul id="consumoE"></ul>
+        <ul id="consumoG"></ul>
+    </section>
+    <script>
+        class Carro {
+            constructor(marca, modelo, cor, ano_fab, precoEtanol, precoGasolina) {
+                this.marca = marca
+                this.modelo = modelo
+                this.cor = cor
+                this.ano_fab = ano_fab
+                this.precoEtanol = parseFloat(precoEtanol)  // Preço do Etanol convertido para decimal (float)
+                this.precoGasolina = parseFloat(precoGasolina) // Preço da Gasolina convertido para decimal (float)
+                this.kmlE = 10 // Consumo de Etanol em km por litro (valor fixo)
+                this.kmlG = 8 // Consumo de Gasolina em km por litro (valor fixo)
+            }
+            mostrar() {
+                // Retorna as informações do carro em formato de lista
+                return `<li>Marca: ${this.marca}</li><li>Modelo: ${this.modelo}</li><li>Cor: ${this.cor}</li><li>Ano de Fabricação: ${this.ano_fab}</li><li>Consumo Etanol: ${this.kmlE} km/l</li><li>Consumo Gasolina: ${this.kmlG} km/l</li><li>Preço do Etanol: R$ ${this.precoEtanol}</li><li>Preço da Gasolina: R$ ${this.precoGasolina}</li>`
+            }
+            calcularE(distancia) {
+                // Calcula o custo do Etanol para a distância informada
+                const distanciaConvertida = parseFloat(distancia)  // Converte a distância para decimal (float)
+                return this.precoEtanol * (distanciaConvertida / this.kmlE) // Cálculo do custo do Etanol
+            }
+            calcularG(distancia) {
+                // Calcula o custo da Gasolina para a distância informada
+                const distanciaConvertida = parseFloat(distancia) // Converte a distância para decimal (float)
+                return this.precoGasolina * (distanciaConvertida / this.kmlG) // Cálculo do custo da Gasolina
+            }
+        }
+
+        let objCarro = undefined // Variável para armazenar o objeto Carro
+        // Definimos como undefined para evitar erros
+
+        function enviar() {
+            // Coleta os valores dos inputs e cria um novo objeto Carro
+            const marca = document.getElementById('marca').value
+            const modelo = document.getElementById('modelo').value
+            const cor = document.getElementById('cor').value
+            const ano_fab = document.getElementById('ano_fab').value
+            const precoEtanol = document.getElementById('precoEtanol').value
+            const precoGasolina = document.getElementById('precoGasolina').value
+
+            // Cria o objeto Carro com os valores informados
+            objCarro = new Carro(marca, modelo, cor, ano_fab, precoEtanol, precoGasolina)
+
+            // Chama o método mostrar() do objeto Carro para exibir as informações
+            document.getElementById('info').innerHTML = objCarro.mostrar()
+        }
+
+        // Variáveis para armazenar a distância e o valor calculado
+        let distancia = 0
+        let valor = 0
+
+        function calcularE() { // Função para calcular o custo do Etanol
+           
+            // Verifica se o objeto Carro foi criado antes de calcular
+            if (objCarro === undefined) {
+                alert('Preencha as informações do carro primeiro!')
+                return
+            }
+
+            // Coleta a distância informada pelo usuário
+            distancia = document.getElementById('distancia').value
+            valor = objCarro.calcularE(distancia) // Chama o método para calcular o custo do Etanol
+            document.getElementById('consumoE').innerHTML = `<li>Valor do Etanol: R$ ${valor}</li>` // Exibe o resultado na lista
+        }
+       
+        function calcularG() { // Função para calcular o custo da Gasolina
+
+            // Verifica se o objeto Carro foi criado antes de calcular
+            if (objCarro === undefined) {
+                alert('Preencha as informações do carro primeiro!')
+                return
+            }
+
+            // Coleta a distância informada pelo usuário
+            distancia = document.getElementById('distancia').value
+            valor = objCarro.calcularG(distancia) // Chama o método para calcular o custo da Gasolina
+            document.getElementById('consumoG').innerHTML = `<li>Valor da Gasolina: R$ ${valor}</li>` // Exibe o resultado na lista
+        }
+
+    </script>
+</body>
+</html>

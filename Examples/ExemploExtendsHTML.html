@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exemplo de Extends de Classes</title>
+  </head>
+  <body>
+
+    <h2>Exemplo de Extends de Classes</h2>
+
+    <p id="demo"> </p>
+
+    <script>
+
+      class Pessoa {
+        constructor(nome, idade, sexo) {
+          this.nome = nome;
+          this.idade = idade;
+          this.sexo = sexo;
+        }
+
+        testeAlert() {
+          alert(
+            `Nome: ${this.nome}, Idade: ${this.idade}, Sexo: ${this.sexo}.`
+          );
+        }
+      }
+
+      class Professor extends Pessoa {
+        constructor(nome, idade, sexo, materia) {
+          /* ◽ Chamada do constructor da classe mãe */
+          super(nome, idade, sexo);
+          /* ◽ O super é uma representação do constructor da classe mãe. E sempre deve ser a primeira linha na classe filha❗ */
+          this.materia =
+            materia; /* ◽ Adicionando uma nova propriedade a classe filha */
+        }
+
+        darAula() {
+            document.getElementById("demo").innerHTML = `Professor ${this.nome} está dando aula de ${this.materia}.`
+        }
+      }
+
+      /* 🔹 Colocando um Objeto para a classe Professor  */
+      const professor1 = new Professor("Carlos", 40, "Masculino", "Matemática");
+
+      /* ◽ Chama o método da classe Pessoa (classe mãe) */
+      professor1.testeAlert();
+
+      /* ◽ Chama o método da classe Professor */
+      professor1.darAula();
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício de Encapsulamento com GET</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+            white-space: pre-wrap; /* Permite quebra de linha no texto */
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Exercício de Encapsulamento com GET</h1>
+
+    <form id="formAluno">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite o Nome" required>
+
+        <label for="RM">RM:</label>
+        <input type="text" id="RM" name="RM" placeholder="Digite o RM" required>
+
+        <label for="disciplina">Disciplina:</label>
+        <input type="text" id="disciplina" name="disciplina" placeholder="Digite a Disciplina" required>
+
+        <label for="prova1">Nota Prova 1:</label>
+        <input type="number" id="prova1" name="prova1" placeholder="Digite a Nota da Prova 1" max="10" min="0" required>
+
+        <label for="prova2">Nota Prova 2:</label>
+        <input type="number" id="prova2" name="prova2" placeholder="Digite a Nota da Prova 2" max="10" min="0" required>
+
+        <label for="trabalho">Nota Trabalho:</label>
+        <input type="number" id="trabalho" name="trabalho" placeholder="Digite a Nota do Trabalho" max="10" min="0" required>
+
+        <button type="button" onclick="exibirAluno()">Exibir Informações</button>
+    </form>
+
+    <p id="resultado"></p>
+
+    <script>
+        class Aluno {
+            constructor(nome, RM, disciplina, prova1, prova2, trabalho) {
+                this._nome = nome;
+                this._RM = RM;
+                this._disciplina = disciplina;
+                this._prova1 = prova1;
+                this._prova2 = prova2;
+                this._trabalho = trabalho;
+            }
+
+            // GET para nome e disciplina retornando em maiúsculo
+            get nome() {
+                return this._nome.toUpperCase();
+            }
+
+            get disciplina() {
+                return this._disciplina.toUpperCase();
+            }
+
+            // GET para RM
+            get RM() {
+                return this._RM;
+            }
+
+            // GET para média
+            get media() {
+                return ((this._prova1 + this._prova2 + this._trabalho) / 3).toFixed(1);
+            }
+
+            // SET para prova1, prova2 e trabalho com validação
+            set prova1(valor) {
+                if (valor >= 0 && valor <= 10) {
+                    this._prova1 = valor;
+                } else {
+                    throw new Error("Nota da Prova 1 deve estar entre 0 e 10.");
+                }
+            }
+
+            set prova2(valor) {
+                if (valor >= 0 && valor <= 10) {
+                    this._prova2 = valor;
+                } else {
+                    throw new Error("Nota da Prova 2 deve estar entre 0 e 10.");
+                }
+            }
+
+            set trabalho(valor) {
+                if (valor >= 0 && valor <= 10) {
+                    this._trabalho = valor;
+                } else {
+                    throw new Error("Nota do Trabalho deve estar entre 0 e 10.");
+                }
+            }
+        }
+
+        function exibirAluno() {
+            try {
+                const nome = document.getElementById("nome").value;
+                const RM = document.getElementById("RM").value;
+                const disciplina = document.getElementById("disciplina").value;
+                const prova1 = parseFloat(document.getElementById("prova1").value);
+                const prova2 = parseFloat(document.getElementById("prova2").value);
+                const trabalho = parseFloat(document.getElementById("trabalho").value);
+
+                // Verificação se todos os campos foram preenchidos
+                if (!nome || !RM || !disciplina || isNaN(prova1) || isNaN(prova2) || isNaN(trabalho)) {
+                    throw new Error("Por favor, preencha todos os campos corretamente.");
+                }
+
+                // Validação para notas
+                if (prova1 < 0 || prova1 > 10 || prova2 < 0 || prova2 > 10 || trabalho < 0 || trabalho > 10) {
+                    throw new Error("As notas devem estar entre 0 e 10.");
+                }
+
+                // Criação do objeto Aluno
+                const aluno = new Aluno(nome, RM, disciplina, prova1, prova2, trabalho);
+
+                // Exibição dos dados do aluno
+                document.getElementById("resultado").innerText = 
+                    `Aluno: ${aluno.nome}\n` +
+                    `RM: ${aluno.RM}\n` +
+                    `Disciplina: ${aluno.disciplina}\n` +
+                    `Média: ${aluno.media}`;
+            } catch (error) {
+                document.getElementById("resultado").innerText = error.message;
+            }
+        }
+    </script>
+
+</body>
+</html>

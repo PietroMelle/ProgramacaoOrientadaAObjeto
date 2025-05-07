@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title> Exercício de Extends em Classes </title>
+    <style>
+        /* Modificando o corpo todo do site */
+        body {
+            font-family: sans-serif;
+            background: #f0f4f8;
+            max-width: 35vw;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Modificano o H1 */
+        h1 {
+            color: #004d99;
+            border-bottom: 2px solid #004d99; /* Serve para colocar a borda apenas em baixo (uma linha) */
+        }
+
+        /* Modificando o form */
+        form {
+            background: #fff;
+            padding: 1.5em;
+            border-radius: 10px;
+            box-shadow: 0px 0px 8px gray;
+        }
+
+
+        /* Modificando o label (texto que fica acima do input) */
+        label {
+            font-weight: 600; /* Vai deixar o texto em negrito */
+        }
+        
+        /* Modifica o input (onde coloca as informações) */
+        input {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        /* Modificando o botão */
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 1em;
+            border-radius: 5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 1s ease;
+            margin-top: 10px;
+        }
+
+        /* Modificando o hover do botão (ao passar o mouse em cim) */
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .resultado-container {
+            background: #fff;
+            padding: 1.5em;
+            border-radius: 10px;
+            box-shadow: 0px 0px 8px gray;
+        }
+
+        .resultado-container h2 {
+            color: #008c99;
+            border-bottom: 2px solid #008c99; /* Serve para colocar a borda apenas em baixo (uma linha) */
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <center>
+    <h2> Exercício de Extends em Classes </h2>
+    </center>
+
+    <form id="formCachorro">
+
+        <h1> Cachorro </h1>
+
+        <label for="nomeCachorro"> Nome: </label>
+        <input type="text" id="nomeCachorro" name="nome" required />
+
+        <br />
+        <br />
+
+        <label for="especieCachorro"> Espécie: </label>
+        <input type="text" id="especieCachorro" name="especie" required />
+
+        <br />
+        <br />
+
+        <label for="idadeCachorro"> Idade: </label>
+        <input type="number" id="idadeCachorro" name="idade" required />
+
+        <br />
+        <br />
+
+        <label for="sexoCachorro"> Sexo: </label>
+        <input type="text" id="sexoCachorro" name="sexo" required />
+
+        <br />
+        <br />
+
+        <label for="pesoCachorro"> Peso: </label>
+        <input type="number" id="pesoCachorro" name="peso" required />
+
+        <br />
+        <br />
+
+        <label for="corCachorro"> Cor: </label>
+        <input type="text" id="corCachorro" name="cor" required />
+
+        <br />
+        <br />
+
+        <label for="tipoPelagem"> Tipo de Pelagem: </label>
+        <input type="text" id="tipoPelagem" name="tipoPelagem" required />
+
+        <br />
+        <br />
+
+        <label for="tipoPorte"> Tipo de Porte: </label>
+        <input type="text" id="tipoPorte" name="tipoPorte" required />
+
+    </form>
+
+    <br />
+    <br />
+
+    <form id="formGato">
+
+        <h1> Gato </h1>
+
+        <label for="nomeGato"> Nome: </label>
+        <input type="text" id="nomeGato" name="nome" required />
+
+        <br />
+        <br />
+
+        <label for="especieGato"> Espécie: </label>
+        <input type="text" id="especieGato" name="especie" required />
+
+        <br />
+        <br />
+
+        <label for="idadeGato"> Idade: </label>
+        <input type="number" id="idadeGato" name="idade" required />
+
+        <br />
+        <br />
+
+        <label for="sexoGato"> Sexo: </label>
+        <input type="text" id="sexoGato" name="sexo" required />
+
+        <br />
+        <br />
+
+        <label for="pesoGato"> Peso: </label>
+        <input type="number" id="pesoGato" name="peso" required />
+
+        <br />
+        <br />
+
+        <label for="corGato"> Cor: </label>
+        <input type="text" id="corGato" name="cor" required />
+
+        <br />
+        <br />
+
+        <label for="temFilhote"> Tem Filhote? </label>
+        <input type="text" id="temFilhote" name="temFilhote" />
+
+        <br />
+        <br />
+
+        <label for="racaGato"> Alimentação: </label>
+        <input type="text" id="alimentacao" name="raca" />
+
+    </form>
+
+    <br />
+    <br />
+
+    <form id="formCoelho">
+
+        <h1> Coelho </h1>
+
+        <label for="nomeCoelho"> Nome: </label>
+        <input type="text" id="nomeCoelho" name="nome" required />
+
+        <br />
+        <br />
+
+        <label for="especieCoelho"> Espécie: </label>
+        <input type="text" id="especieCoelho" name="especie" required />
+
+        <br />
+        <br />
+
+        <label for="idadeCoelho"> Idade: </label>
+        <input type="number" id="idadeCoelho" name="idade" required />
+
+        <br />
+        <br />
+
+        <label for="sexoCoelho"> Sexo: </label>
+        <input type="text" id="sexoCoelho" name="sexo" required />
+
+        <br />
+        <br />
+
+        <label for="pesoCoelho"> Peso: </label>
+        <input type="number" id="pesoCoelho" name="peso" required />
+
+        <br />
+        <br />
+
+        <label for="corCoelho"> Cor: </label>
+        <input type="text" id="corCoelho" name="cor" required />
+
+        <br />
+        <br />
+
+        <label for="corOlhos"> Cor dos Olhos: </label>
+        <input type="text" id="corOlhos" name="corOlhos" />
+
+        <br />
+        <br />
+
+        <label for="alturaPulo"> Altura do Pulo: </label>
+        <input type="number" id="alturaPulo" name="alturaPulo" />
+
+    </form>
+
+    <br />
+
+    <center>
+    <button type="button" onclick="criarTodos()"> Enviar Animais </button>
+    </center>
+
+    <br />
+
+    <!-- Resultado ✅ -->
+
+    <!-- Cachorro 🐶 -->
+    <section id="resultadoCachorro" class="resultado-container">
+        <h2>Cachorro</h2>
+        <p id="dadosCachorro">Aqui aparecerão os dados do cachorro.</p>
+        <p id="dadosAdicionaisCachorro"> </p>
+        <p id="parabensCachorro"> </p>
+    </section>
+
+    <br />
+
+    <!-- Gato 🐱 -->
+    <section id="resultadoGato" class="resultado-container">
+        <h2>Gato</h2>
+        <p id="dadosGato">Aqui aparecerão os dados do gato.</p>
+        <p id="dadosAdicionaisGato">  </p>
+        <p id="parabensGato"> </p>
+    </section>
+
+    <br />
+
+    <!-- Coelho 🐰 -->
+    <section id="resultadoCoelho" class="resultado-container">
+        <h2>Coelho</h2>
+        <p id="dadosCoelho">Aqui aparecerão os dados do coelho.</p>
+        <p id="dadosAdicionaisCoelho"> </p>
+        <p id="parabensCoelho"> </p>
+    </section>
+
+    <script>
+        class Animal {
+            constructor(nome, especie, idade, sexo, peso, cor) {
+                this.nome = nome;
+                this.especie = especie;
+                this.idade = idade;
+                this.sexo = sexo;
+                this.peso = peso;
+                this.cor = cor;
+            }
+
+            mostrarDados() {
+                return `<strong> Dados Herdados: </strong> Nome: ${this.nome}, Espécie: ${this.especie}, Idade: ${this.idade}, 
+                Sexo: ${this.sexo}, Peso: ${this.peso}kg, Cor: ${this.cor}.`;
+            }
+
+            mensagemParabens() {
+                return `Parabéns pelo seu ${this.especie} ${this.nome}, que está completando ${this.idade} anos!`;
+            }
+        }
+
+        class Cachorro extends Animal {
+            constructor(nome, especie, idade, sexo, peso, cor, tipoPelagem, tipoPorte) {
+                super(nome, especie, idade, sexo, peso, cor);
+                this.tipoPelagem = tipoPelagem;
+                this.tipoPorte = tipoPorte;
+            }
+
+            mostrarDadosAdicional() {
+                return `<strong> Dados Específicos: </strong> Tipo de Pelagem: ${this.tipoPelagem} e o Tipo de Porte: ${this.tipoPorte}.`
+            }
+        }
+
+        class Gato extends Animal {
+            constructor(nome, especie, idade, sexo, peso, cor, temFilhote, alimentacao) {
+                super(nome, especie, idade, sexo, peso, cor);
+                this.temFilhote = temFilhote;
+                this.alimentacao = alimentacao;
+            }
+
+            mostrarDadosAdicional() {
+                return `<strong> Dados Específicos </strong> Tem Filhotes: ${this.temFilhote} e tem uma Alimentação: ${this.alimentacao}.`
+            }
+        }
+
+        class Coelho extends Animal {
+            constructor(nome, especie, idade, sexo, peso, cor, corOlhos, alturaPulo) {
+                super(nome, especie, idade, sexo, peso, cor);
+                this.corOlhos = corOlhos;
+                this.alturaPulo = alturaPulo;
+            }
+
+            mostrarDadosAdicional() {
+                return `<strong> Dados Específicos </strong> Cor dos Olhos: ${this.corOlhos} e a Altura do Pulo: ${this.alturaPulo} metros.`
+            }
+        }
+
+        function criarTodos() {
+            // Cachorro
+            const nomeCachorro = document.getElementById('nomeCachorro').value;
+            const especieCachorro = document.getElementById('especieCachorro').value;
+            const idadeCachorro = document.getElementById('idadeCachorro').value;
+            const sexoCachorro = document.getElementById('sexoCachorro').value;
+            const pesoCachorro = document.getElementById('pesoCachorro').value;
+            const corCachorro = document.getElementById('corCachorro').value;
+            const tipoPelagem = document.getElementById('tipoPelagem').value || "Não informado!";
+            const tipoPorte = document.getElementById('tipoPorte').value || "Não informado!";
+
+            const cachorro = new Cachorro(nomeCachorro, especieCachorro, idadeCachorro, sexoCachorro, pesoCachorro, corCachorro, tipoPelagem, tipoPorte);
+
+            // Gato
+            const nomeGato = document.getElementById('nomeGato').value;
+            const especieGato = document.getElementById('especieGato').value;
+            const idadeGato = document.getElementById('idadeGato').value;
+            const sexoGato = document.getElementById('sexoGato').value;
+            const pesoGato = document.getElementById('pesoGato').value;
+            const corGato = document.getElementById('corGato').value;
+            const temFilhote = document.getElementById('temFilhote').value || "Não informado!";
+            const raca = document.getElementById('alimentacao').value || "Não informado!";
+
+            const gato = new Gato(nomeGato, especieGato, idadeGato, sexoGato, pesoGato, corGato, temFilhote, raca);
+
+            // Coelho
+            const nomeCoelho = document.getElementById('nomeCoelho').value;
+            const especieCoelho = document.getElementById('especieCoelho').value;
+            const idadeCoelho = document.getElementById('idadeCoelho').value;
+            const sexoCoelho = document.getElementById('sexoCoelho').value;
+            const pesoCoelho = document.getElementById('pesoCoelho').value;
+            const corCoelho = document.getElementById('corCoelho').value;
+            const corOlhos = document.getElementById('corOlhos').value || "Não informado!";
+            const alturaPulo = document.getElementById('alturaPulo').value || "Não informado!";
+
+            const coelho = new Coelho(nomeCoelho, especieCoelho, idadeCoelho, sexoCoelho, pesoCoelho, corCoelho, corOlhos, alturaPulo);
+
+            // Atualizando o conteúdo com dados e mensagens
+            document.getElementById('dadosCachorro').innerHTML = cachorro.mostrarDados();
+            document.getElementById('dadosAdicionaisCachorro').innerHTML = cachorro.mostrarDadosAdicional();
+            document.getElementById('parabensCachorro').innerHTML = cachorro.mensagemParabens();
+
+            document.getElementById('dadosGato').innerHTML = gato.mostrarDados();
+            document.getElementById('dadosAdicionaisGato').innerHTML = gato.mostrarDadosAdicional();
+            document.getElementById('parabensGato').innerHTML = gato.mensagemParabens();
+
+            document.getElementById('dadosCoelho').innerHTML = coelho.mostrarDados();
+            document.getElementById('dadosAdicionaisCoelho').innerHTML = coelho.mostrarDadosAdicional();
+            document.getElementById('parabensCoelho').innerHTML = coelho.mensagemParabens();
+        }
+
+    </script>
+
+</body>
+</html>
